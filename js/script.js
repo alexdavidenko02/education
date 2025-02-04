@@ -1,19 +1,53 @@
 'use strict'
 
-// 1) Обычная функция: this = window, но если стоит use-strict то будет undefined
-// 2) Контекст у методов объекта - сам объект
-// 3) this в конструкторах и классах это новый екземпляр объекта
-// 4) Ручная привязка this: call, apply, bind
+// console.log('Запрос данных...');
 
+// const req = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         console.log('Подготовка данных...');
+    
+//         const product = {
+//             name: 'TV',
+//             price: 2000
+//         };
+    
+//         resolve(product);
+//     }, 2000);
+// });
 
-const log = function(a, b, ...rest) {
-    console.log(a, b, rest);
+// req.then((product) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             product.status = 'order';
+//             resolve(product);
+//             // reject();
+//         }, 2000);
+//     });
+
+// }).then(data => {
+//     data.modify = true;
+//     return data;
+// }).then(data => {
+//     console.log(data);
+// }).catch(() => {
+//     console.error('Произошла ошибка');
+// }).finally(() => {
+//     console.log('Finally');
+// });
+
+const test = time => {
+    return new Promise(resolve => {
+        setTimeout(time => resolve(), time);
+    });
 }
 
-log('basic', 'rest', 'operatot', 'usage');
+// test(1000).then(() => console.log('1000'));
+// test(2000).then(() => console.log('2000'));
 
-function calcOrDouble(number, basis = 2) {
-    console.log(number * basis);
-}
+// Promise.all([test(1000), test(2000)]).then(() => {
+//     console.log('All')
+// });
 
-calcOrDouble(3);
+Promise.race([test(1000), test(2000)]).then(() => {
+    console.log('All');
+});
