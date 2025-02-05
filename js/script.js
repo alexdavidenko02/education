@@ -1,53 +1,59 @@
 'use strict'
 
-// console.log('Запрос данных...');
+// filter
 
-// const req = new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//         console.log('Подготовка данных...');
-    
-//         const product = {
-//             name: 'TV',
-//             price: 2000
-//         };
-    
-//         resolve(product);
-//     }, 2000);
+// const names = ['Ivan', 'Ann', 'Ksenia', 'Voldemart'];
+
+// const shortNames = names.filter((name) => {
+//     return name.length < 5;
 // });
 
-// req.then((product) => {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             product.status = 'order';
-//             resolve(product);
-//             // reject();
-//         }, 2000);
-//     });
+// console.log(shortNames);
 
-// }).then(data => {
-//     data.modify = true;
-//     return data;
-// }).then(data => {
-//     console.log(data);
-// }).catch(() => {
-//     console.error('Произошла ошибка');
-// }).finally(() => {
-//     console.log('Finally');
-// });
 
-const test = time => {
-    return new Promise(resolve => {
-        setTimeout(time => resolve(), time);
-    });
-}
 
-// test(1000).then(() => console.log('1000'));
-// test(2000).then(() => console.log('2000'));
+// map
 
-// Promise.all([test(1000), test(2000)]).then(() => {
-//     console.log('All')
-// });
+// let answers = ['IvAn', 'AnnA', 'Hello'];
 
-Promise.race([test(1000), test(2000)]).then(() => {
-    console.log('All');
-});
+// answers = answers.map(item => item.toLowerCase());
+// console.log(answers);
+
+
+
+// every/some
+
+// const some = [4, 'qwq', 'sdfsdfa'];
+
+// console.log(some.some(item => typeof(item) === 'number'));
+// console.log(some.every(item => typeof(item) === 'number'));
+
+
+
+// reduce
+
+// const arr = [4, 5, 1, 3, 2, 6];
+
+// const result = arr.reduce((sum, current) => sum + current);
+
+// console.log(result);
+
+
+// const arr = ['apple', 'pear', 'plum'];
+
+// const result = arr.reduce((sum, current) => `${sum}, ${current}`, 3);
+// console.log(result);
+
+// const obj = {
+//     ivan: 'persone',
+//     ann: 'persone',
+//     dog: 'animal',
+//     cat: 'animal'
+// }
+
+// const newArr = Object.entries(obj)
+// .filter(item => item[1] === 'persone')
+// .map(item => item[0])
+// .reduce((sum ,item) => `${sum}, ${item}`);
+
+// console.log(newArr);
